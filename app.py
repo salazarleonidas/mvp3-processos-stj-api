@@ -33,8 +33,8 @@ def add_processo(form: ProcessoSchema):
 
     processo = Processo(
         numeroRegistro = form.numeroRegistro,
-        data = form.data,
-        uf = form.uf)
+        uf = form.uf,
+        data = form.data)
 
     logger.debug(f"Adicionando processo de registro: '{processo.numeroRegistro}'")
 
@@ -102,7 +102,6 @@ def update_processo(form: ProcessoSchema):
 
 @app.get('/processos', tags=[processo_tag],
          responses={"200": ListagemProcessosSchema, "404": ErrorSchema})
-
 def get_processos():
 
     """Faz a busca por todos os Processo cadastrados
@@ -117,7 +116,7 @@ def get_processos():
         return {"processos": []}, 200
 
     else:
-        logger.debug(f"%d processos econtrados" % len(processos))
+        logger.debug(f"%d processos encontrados" % len(processos))
         print(processos)
 
         return apresenta_processos(processos), 200

@@ -32,9 +32,10 @@ def apresenta_processos(processos: List[Processo]):
     """
     result = []
     for processo in processos:
+        data = f'{processo.data.day}/{processo.data.month}/{processo.data.year}'
         result.append({
             "numeroRegistro": processo.numeroRegistro,
-            "data": processo.data,
+            "data": data,
             "uf": processo.uf
         })
 
@@ -62,9 +63,10 @@ def apresenta_processo(processo: Processo):
     """ Retorna uma representação do processo seguindo o schema definido em
         ProcessoViewSchema.
     """
+    data = f'{processo.data.day}/{processo.data.month}/{processo.data.year}'
     return {
         "numeroRegistro": processo.numeroRegistro,
-        "data": processo.data,
+        "data": data,
         "uf": processo.uf,
         "fases": [{"texto": c.texto} for c in processo.fases]
     }

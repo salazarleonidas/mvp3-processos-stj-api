@@ -19,13 +19,17 @@ class Processo(Base):
     def __init__(self,
                 numeroRegistro:str,
                 uf:str,
-                data:Union[DateTime, None] = None,
+                data: str,
                 data_insercao:Union[DateTime, None] = None):
         """
         Cria um Processo
         """
+
+        dataArr = data.split("/");
+        a = datetime(int(dataArr[2]), int(dataArr[1]), int(dataArr[0]));
+
         self.numeroRegistro = numeroRegistro
-        self.data = data
+        self.data = a
         self.uf = uf
         
         if data_insercao:
